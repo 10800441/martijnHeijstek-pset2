@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">martijnHeijstek-pset2</string>
+    <string name="app_name">Mad Libs</string>
     <string name="action_settings">Settings</string>
+    <string name="button_send">button_send</string>
 </resources>
