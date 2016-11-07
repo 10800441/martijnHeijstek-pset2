@@ -13,14 +13,46 @@
     tools:context="com.example.marty_000.martijnheijstek_pset2.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/imageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:visibility="visible"
+            android:contentDescription="@string/madlibs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/madlibs"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/textLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="sendMessage" />
+        android:visibility="visible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcomeMessage"
+            android:onClick="nextScreen" />
+    </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:visibility="visible">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_send"
+            android:onClick="nextScreen" />
+
+    </RelativeLayout>
 </RelativeLayout>

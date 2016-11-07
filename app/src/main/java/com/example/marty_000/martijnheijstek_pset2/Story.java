@@ -22,7 +22,7 @@ package com.example.marty_000.martijnheijstek_pset2;
 import java.io.*;
 import java.util.*;
 
-public class Story implements Serializable {
+public class  Story implements Serializable {
     private String text;                 // text of the story
     private List<String> placeholders;   // list of placeholders to fill in
     private int filledIn;                // number of placeholders that have been filled in
