@@ -1,5 +1,6 @@
 package com.example.marty_000.martijnheijstek_pset2;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,14 +14,14 @@ public class Screen3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen3);
 
-        SharedPreferences prefs = this.getSharedPreferences("setttings", this.MODE_PRIVATE);
-        String name = prefs.getString("name", "");
+        Intent intent = getIntent();
+        String newStory = intent.getExtras().getString("newStory");
 
-        //TextView welcomeTV = (TextView) findViewById(R.id.TextView2);
-        //welcomeTV.setText("welcome " + name + "! \n Please enter something");
-
+        TextView madlibStory = (TextView) findViewById(R.id.storyText);
+        madlibStory.setText(newStory);
     }
-    public void toNext(View view){
-
+    public void otherStory(View view){
+        startActivity(new Intent (this, Screen2Activity.class));
+        finish();
     }
 }

@@ -28,29 +28,33 @@
         </RelativeLayout>
 
     <RelativeLayout
-        android:layout_margin="20dp"
         android:id="@+id/fillInBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fillInLayout"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_marginTop="12dp">
 
         <TextView
             android:id="@+id/boxMessage"
-            android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:textSize="18sp"
             android:text="@string/boxMessage"/>
+        <RelativeLayout
+            android:id="@+id/edit"
+            android:layout_below="@+id/boxMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:layout_centerHorizontal="true"
             android:hint="@string/hintType"
-            android:ems="10"
-            android:layout_below="@+id/boxMessage"
+            android:ems="15"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:imeActionLabel="@string/nextInput"
@@ -60,18 +64,18 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/editText"
             android:layout_toEndOf="@+id/editText"
-            android:layout_below="@+id/boxMessage"
             android:text="@string/nextInput"
             android:onClick="nextButtonClicked"
-            android:id="@+id/nextButton"
-        />
+            android:id="@+id/nextButton"/>
+
+            </RelativeLayout>
         <TextView
             android:id="@+id/typeMessage"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="25dp"
             android:textSize="13sp"
-            android:layout_below="@+id/editText"
+            android:layout_below="@+id/edit"
             android:layout_margin="15dp"
             android:text="@string/typeMessage"/>
 
