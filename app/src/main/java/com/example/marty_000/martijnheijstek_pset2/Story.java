@@ -17,7 +17,6 @@ package com.example.marty_000.martijnheijstek_pset2;
  * A com.example.marty_000.martijnheijstek_pset2.Story is Serializable, so it can be packed into an Intent as "extra" data.
  */
 
-// !YOU MAY WANT TO CHANGE THE PACKAGE BELOW SO THAT IT MATCHES YOUR PROJECT'S PACKAGE!
 
 import java.io.*;
 import java.util.*;
@@ -65,11 +64,6 @@ public class  Story implements Serializable {
         } else {
             return placeholders.get(filledIn);
         }
-    }
-
-    /** returns total number of placeholders in the story */
-    public int getPlaceholderCount() {
-        return placeholders.size();
     }
 
     /** returns how many placeholders still need to be filled in */

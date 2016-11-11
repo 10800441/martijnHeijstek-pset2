@@ -1,27 +1,29 @@
 package com.example.marty_000.martijnheijstek_pset2;
-
+/* Mad Libs
+ * 11-11-2016
+ * Martijn Heijstek, 10800441
+ * Screen where the user has to fill in the missing words
+ */
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.InputStream;
-
 import java.io.IOException;
 import java.util.Random;
 
 public class Screen2Activity extends Activity {
-    TextView remainingWords;
-    TextView typeMessage;
-    Button nextButton;
-    EditText editText;
-    InputStream is;
+    private TextView remainingWords;
+    private TextView typeMessage;
+    private Button nextButton;
+    private EditText editText;
+    private InputStream is;
     private Story newStory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
@@ -51,11 +53,12 @@ public class Screen2Activity extends Activity {
         editText.setHint(newStory.getNextPlaceholder());
     }
 
+    // Choose a new story at random
     public Story createNewStory() throws IOException {
-
-        StringBuffer buf = new StringBuffer();
         Random random = new Random();
         int fileIndex = random.nextInt(4);
+
+        // path = ...\martijnHeijstek-pset2\app\src\main\res\raw\"file name"
        if(fileIndex == 0) {
            is = this.getResources().openRawResource(R.raw.madlib0_simple);
        } if(fileIndex == 1) {
@@ -68,22 +71,15 @@ public class Screen2Activity extends Activity {
             is = this.getResources().openRawResource(R.raw.madlib4_dance);
         }
         // Read the stream with the "Story" class
-        try {
-            if (is != null) {
-                newStory = new Story(is);
-            }
-        } finally {
-            try {
-                is.close();
-            } catch (Throwable ignore) {
-            }
-        }
+        newStory = new Story(is);
+
         return newStory;
     }
 
     public void nextButtonClicked(View view) {
 
         String userInput = editText.getText().toString();
+
         // the user cannot enter an empty string
         if (userInput.equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter a word",
@@ -98,21 +94,25 @@ public class Screen2Activity extends Activity {
                 startActivity(intent);
                 finish();
             } else {
-                
-                String hintText = newStory.getPlaceholderRemainingCount() + " words left";
-                if (newStory.getPlaceholderRemainingCount() == 1) {
-                    String string = "Finish";
-                    nextButton.setText(string);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Great! Keep going!",
-                            Toast.LENGTH_SHORT).show();
-                }
-                String typeText = "Please type a/an " + newStory.getNextPlaceholder();
-                remainingWords.setText(hintText);
-                editText.setHint(newStory.getNextPlaceholder());
-                typeMessage.setText(typeText);
+                updateScreen();
             }
         }
+    }
+
+    private void updateScreen() {
+        String hintText = newStory.getPlaceholderRemainingCount() + " words left";
+        if (newStory.getPlaceholderRemainingCount() == 1) {
+            String string = "Finish";
+            nextButton.setText(string);
+        } else {
+            Toast.makeText(getApplicationContext(), "Great! Keep going!",
+                    Toast.LENGTH_SHORT).show();
+        }
+        // Indicate the type of word the user has to input
+        String typeText = "Please type a/an " + newStory.getNextPlaceholder();
+        remainingWords.setText(hintText);
+        editText.setHint(newStory.getNextPlaceholder());
+        typeMessage.setText(typeText);
     }
 
     @Override
